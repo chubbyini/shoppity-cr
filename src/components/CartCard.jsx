@@ -1,4 +1,9 @@
+import { remove } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
+
+
 export const CartCard = ({ product }) => {
+  const dispatch = useDispatch();
   const { name, price, image } = product;
 
   return (
@@ -11,7 +16,7 @@ export const CartCard = ({ product }) => {
       />
       <p className="w-[350px] mr-2.5">{name}</p>
       <p className="w-[100px] mr-2.5">{price}</p>
-      <button className="bg-[#ac0d14] text-white rounded px-2.5 py-1 cursor-pointer hover:bg-[#8e090f]">
+      <button onClick={()=> dispatch(remove(product))} className="bg-[#ac0d14] text-white rounded px-2.5 py-1 cursor-pointer hover:bg-[#8e090f]">
         Remove product
       </button>
     </div>
